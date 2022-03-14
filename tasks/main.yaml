@@ -1,0 +1,41 @@
+---
+
+- import_tasks: pre-checks.yaml
+
+- include_tasks: "{{ ansible_os_family | lower }}/install-os-dependencies.yml"
+  when: vault_install_os_dependencies is defined
+        and vault_install_os_dependencies
+
+- name: Ensure the vault_arch fact is set
+  set_fact:
+    vault_arch: "{{ vault_arch_lookup[ansible_architecture].arch }}"
+  when: vault_arch is not defined
+
+- name: Ensure vault archive is downloaded
+  get_url:
+    url: "{{ vault_release_baseurl }}/{{ vault_version }}/vault_{{ vault_version }}_linux_{{ vault_arch }}.zip"
+    dest: "/tmp/vault_{{ vault_version }}.zip"
+    mode: 0600
+
+- name: Ensure vault_install_dir exists
+  file:
+    path: "{{ vault_install_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Ensure vault archive is extracted to installation directory
+  unarchive:
+    src: "/tmp/vault_{{ vault_version }}.zip"
+    dest: "{{ vault_install_dir }}"
+    remote_src: true
+    mode: 0755
+  when: not vault_check_existing.stat.exists
+        or (vault_check_existing.stat.exists
+            and vault_check_existing_version.stdout_lines[0] != vault_version)
+
+- name: Check that the archive has been extracted correctly
+  stat:
+    path: "{{ vault_install_dir }}/vault"
+  register: vault_check_extracted
+
+- import_tasks: post-checks.yaml

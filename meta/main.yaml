@@ -1,0 +1,33 @@
+---
+
+galaxy_info:
+  author: "klaatu51"
+  description: "HashiCorp Vault server role"
+  company: "Shipwright Ltd."
+  license: "BSD"
+  min_ansible_version: 2.7
+
+platforms:
+  - name: EL
+    versions:
+      - 7
+      - 8
+  - name: Ubuntu
+    versions:
+      - xenial
+      - bionic
+  - name: Debian
+    versions:
+      - buster
+      - jessie
+      - stretch
+
+  galaxy_tags:
+    - networking
+    - security
+    - system
+    - secrets
+    - vault
+    - hasicorp
+
+dependencies: []

@@ -1,0 +1,10 @@
+---
+
+# Use a specific version of vault.
+vault_version: false
+
+# Allow role to install OS dependencies.
+vault_install_os_dependencies: false
+
+# Installation directory for vault.
+vault_install_dir: "{{ ansible_user_dir }}/bin"
