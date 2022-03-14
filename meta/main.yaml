@@ -1,15 +1,13 @@
 ---
-
 dependencies: []
 
 galaxy_info:
   author: "klaatu51"
-  role_name: packer
+  role_name: vault
   description: "HashiCorp Vault server role"
   company: "Shipwright Ltd."
   license: "BSD"
   min_ansible_version: 2.7
-
   platforms:
     - name: EL
       versions:
