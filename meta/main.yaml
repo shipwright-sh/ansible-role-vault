@@ -1,5 +1,7 @@
 ---
 
+dependencies: []
+
 galaxy_info:
   author: "klaatu51"
   role_name: packer
@@ -8,21 +10,17 @@ galaxy_info:
   license: "BSD"
   min_ansible_version: 2.7
 
-platforms:
-  - name: EL
-    versions:
-      - 7
-      - 8
-  - name: Ubuntu
-    versions:
-      - xenial
-      - bionic
-  - name: Debian
-    versions:
-      - buster
-      - jessie
-      - stretch
-
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
   galaxy_tags:
     - networking
     - security
@@ -30,5 +28,3 @@ platforms:
     - secrets
     - vault
     - hasicorp
-
-dependencies: []
