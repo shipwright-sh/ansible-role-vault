@@ -2,6 +2,7 @@
 
 galaxy_info:
   author: "klaatu51"
+  role_name: packer
   description: "HashiCorp Vault server role"
   company: "Shipwright Ltd."
   license: "BSD"
